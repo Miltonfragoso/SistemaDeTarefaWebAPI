@@ -1,5 +1,9 @@
 using Microsoft.EntityFrameworkCore;
+using Refit;
 using SistemaDeTarefasWebAPI.Data;
+using SistemaDeTarefasWebAPI.Integracao;
+using SistemaDeTarefasWebAPI.Integracao.Interfaces;
+using SistemaDeTarefasWebAPI.Integracao.Refit;
 using SistemaDeTarefasWebAPI.Repositorios;
 using SistemaDeTarefasWebAPI.Repositorios.Interfaces;
 
@@ -25,6 +29,11 @@ namespace SistemaDeTarefasWebAPI
             //Configuração de injeção de dependência
             builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
             builder.Services.AddScoped<ITarefaRepositorio, TarefaRepositorio>();
+            builder.Services.AddScoped<IViaCepIntegracao, ViaCepIntegracao>();
+
+
+            builder.Services.AddRefitClient<IViaCepIntegracaoRefit>()
+                            .ConfigureHttpClient(c => c.BaseAddress = new Uri("https://viacep.com.br/"));
 
 
             var app = builder.Build();
