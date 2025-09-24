@@ -39,7 +39,8 @@ namespace SistemaDeTarefasWebAPI.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult<List<UsuarioModel>>> Atualizar([FromBody] UsuarioModel usuario, int id)
         {
-            usuario.Id = id;
+            //Esta linha garante que o id da rota seja o mesmo id do objeto
+            //usuario.Id = id;
             UsuarioModel Usuario = await _usuarioRepositorio.Atualizar(usuario, id);
             return Ok(Usuario);
         }

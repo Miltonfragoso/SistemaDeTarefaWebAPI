@@ -19,6 +19,11 @@ namespace SistemaDeTarefasWebAPI.Data.Map
 
             builder.Property(t => t.Status)
                    .IsRequired();
+            builder.Property(t => t.UsuarioId);
+
+            //Relacionamento
+            builder.HasOne(t => t.Usuario);
+ 
         }
     }
 }

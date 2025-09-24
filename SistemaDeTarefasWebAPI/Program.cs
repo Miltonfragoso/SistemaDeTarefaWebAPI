@@ -23,8 +23,8 @@ namespace SistemaDeTarefasWebAPI
                             .AddDbContext<MeuDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             //Configuração de injeção de dependência
-            builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositoriocs>();
-            //builder.Services.AddScoped<ITarefaRepositorio, TarefaRepositoriocs>();
+            builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
+            builder.Services.AddScoped<ITarefaRepositorio, TarefaRepositorio>();
 
 
             var app = builder.Build();

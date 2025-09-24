@@ -12,5 +12,10 @@ namespace SistemaDeTarefasWebAPI.Models
 
         public StatusTarefa Status { get; set; }
 
+        public int? UsuarioId{ get; set; }
+
+        //EF
+        public virtual UsuarioModel? Usuario { get; set; }
+
     }
 }
